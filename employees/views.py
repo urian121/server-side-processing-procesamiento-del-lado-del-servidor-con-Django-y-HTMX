@@ -12,7 +12,7 @@ def employee_data(request):
     """Vista HTMX para obtener datos de empleados"""
     # Parámetros de paginación y búsqueda
     page = request.GET.get('page', 1)
-    per_page = request.GET.get('per_page', 25)
+    per_page = request.GET.get('per_page', 500)
     search = request.GET.get('search', '')
     sort_by = request.GET.get('sort', 'id')
     sort_dir = request.GET.get('dir', 'asc')

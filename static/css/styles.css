@@ -98,6 +98,111 @@ th.sortable {
     padding-right: 1.5rem;
 }
 
+/* Estilo para fijar altura de la tabla */
+.table-responsive tbody {
+    display: block;
+    height: 400px;
+    /* Altura fija para el cuerpo de la tabla */
+    overflow-y: auto;
+    /* Permite desplazamiento vertical */
+    border-bottom: 1px solid #dee2e6;
+    /* Borde inferior para mejor apariencia */
+}
+
+.table-responsive thead,
+.table-responsive tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table-responsive thead {
+    width: calc(100% - 1.1em);
+    /* Ajuste para compensar la barra de desplazamiento */
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    /* Fondo blanco para el encabezado */
+    z-index: 1;
+    /* Asegura que el encabezado esté por encima del contenido */
+    border-bottom: 2px solid var(--primary-green);
+    /* Borde inferior destacado */
+}
+
+/* Ajuste de anchos de columnas */
+.table-responsive th:nth-child(1),
+.table-responsive td:nth-child(1) {
+    width: 5%;
+    /* ID */
+}
+
+/* Mejora de interacción con filas */
+.table-responsive tbody tr:hover {
+    background-color: rgba(165, 214, 167, 0.2) !important;
+    /* Color verde claro al pasar el cursor */
+    transition: background-color 0.2s ease;
+}
+
+/* Estilo para la barra de desplazamiento */
+.table-responsive tbody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-responsive tbody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-responsive tbody::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.table-responsive tbody::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-green);
+}
+
+.table-responsive th:nth-child(2),
+.table-responsive td:nth-child(2),
+.table-responsive th:nth-child(3),
+.table-responsive td:nth-child(3) {
+    width: 12%;
+    /* Nombre y Apellido */
+}
+
+.table-responsive th:nth-child(4),
+.table-responsive td:nth-child(4) {
+    width: 18%;
+    /* Email */
+}
+
+.table-responsive th:nth-child(5),
+.table-responsive td:nth-child(5),
+.table-responsive th:nth-child(6),
+.table-responsive td:nth-child(6) {
+    width: 15%;
+    /* Departamento y Cargo */
+}
+
+.table-responsive th:nth-child(7),
+.table-responsive td:nth-child(7),
+.table-responsive th:nth-child(8),
+.table-responsive td:nth-child(8) {
+    width: 10%;
+    /* Salario y Estado */
+}
+
+/* Manejo de texto en celdas */
+.table-responsive td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5rem 0.75rem;
+}
+
+.table-responsive th {
+    padding: 0.75rem 0.75rem;
+}
 th.sortable:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }

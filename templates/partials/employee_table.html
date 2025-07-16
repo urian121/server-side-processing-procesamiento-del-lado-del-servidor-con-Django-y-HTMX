@@ -64,9 +64,9 @@
             <td class="text-success fw-bold">${{ employee.salary|floatformat:2 }}</td>
             <td>
                 {% if employee.is_active %}
-                <span class="badge bg-success">✅ Activo</span>
+                <span class="badge bg-success">Activo</span>
                 {% else %}
-                <span class="badge bg-danger">❌ Inactivo</span>
+                <span class="badge bg-danger">Inactivo</span>
                 {% endif %}
             </td>
         </tr>
@@ -88,7 +88,7 @@
             {% if page_obj.has_previous %}
             <li class="page-item">
                 <a class="page-link" 
-                   hx-get="{% url 'employee_data' %}?page={{ page_obj.previous_page_number }}&per_page={{ request.GET.per_page|default:'25' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
+                   hx-get="{% url 'employee_data' %}?page={{ page_obj.previous_page_number }}&per_page={{ request.GET.per_page|default:'500' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
                    hx-target="#employee-table-container"
                    hx-indicator=".htmx-indicator"
                    href="#">Anterior</a>
@@ -107,7 +107,7 @@
                 {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
                 <li class="page-item">
                     <a class="page-link" 
-                       hx-get="{% url 'employee_data' %}?page={{ i }}&per_page={{ request.GET.per_page|default:'25' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
+                       hx-get="{% url 'employee_data' %}?page={{ i }}&per_page={{ request.GET.per_page|default:'500' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
                        hx-target="#employee-table-container"
                        hx-indicator=".htmx-indicator"
                        href="#">{{ i }}</a>
@@ -118,7 +118,7 @@
             {% if page_obj.has_next %}
             <li class="page-item">
                 <a class="page-link" 
-                   hx-get="{% url 'employee_data' %}?page={{ page_obj.next_page_number }}&per_page={{ request.GET.per_page|default:'25' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
+                   hx-get="{% url 'employee_data' %}?page={{ page_obj.next_page_number }}&per_page={{ request.GET.per_page|default:'500' }}&search={{ request.GET.search|default:'' }}&sort={{ request.GET.sort|default:'id' }}&dir={{ request.GET.dir|default:'asc' }}"
                    hx-target="#employee-table-container"
                    hx-indicator=".htmx-indicator"
                    href="#">Siguiente</a>
