@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lista de Empleados{% endblock %}
+
+{% block content %}
+<div class="row fade-in-up">
+    <div class="col-12">
+        <!-- Estadísticas -->
+        <div class="employee-stats mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">Estadísticas</h4>
+                <div>
+                    <span class="badge bg-primary" 
+                          hx-get="{% url 'employee_count' %}" 
+                          hx-trigger="load"
+                          hx-swap="innerHTML"
+                          hx-indicator=".htmx-indicator">0</span> empleados en total
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta principal -->
+        <div class="card shadow mb-5">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">Lista de Empleados</h3>
+                    <div class="d-flex align-items-center">
+                        <!-- Buscador -->
+                        <div class="input-group me-2">
+                            <input type="text" 
+                                   class="form-control" 
+                                   placeholder="Buscar empleados..." 
+                                   aria-label="Buscar"
+                                   name="search"
+                                   hx-get="{% url 'employee_data' %}"
+                                   hx-trigger="keyup changed delay:500ms"
+                                   hx-target="#employee-table-container"
+                                   hx-indicator=".htmx-indicator">
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </div>
+                        
+                        <!-- Selector de registros por página -->
+                        <select class="form-select"
+                                hx-get="{% url 'employee_data' %}"
+                                hx-trigger="change"
+                                hx-target="#employee-table-container"
+                                hx-indicator=".htmx-indicator"
+                                name="per_page">
+                            <option value="25">25 por página</option>
+                            <option value="50">50 por página</option>
+                            <option value="100">100 por página</option>
+                            <option value="500">500 por página</option>
+                            <option value="1000">1000 por página</option>
+                        </select>
+                    </div>
+                </div>                
+            </div>
+            
+            <div class="card-body">
+                <!-- Indicador de carga -->
+                <div class="htmx-indicator position-absolute top-50 start-50 translate-middle">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+                
+                <!-- Contenedor de la tabla -->
+                <div id="employee-table-container" class="table-responsive"
+                     hx-get="{% url 'employee_data' %}"
+                     hx-trigger="load"
+                     hx-indicator=".htmx-indicator">
+                    <!-- La tabla se cargará aquí con HTMX -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Agregar clase de animación
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.querySelectorAll('.fade-in-up').forEach(function(el) {
+                el.classList.add('fade-in-up');
+            });
+        }, 100);
+        
+        // Registrar eventos HTMX para debugging
+        document.body.addEventListener('htmx:beforeRequest', function(event) {
+            console.log('🔄 Cargando datos...');
+        });
+        
+        document.body.addEventListener('htmx:afterRequest', function(event) {
+            console.log('✅ Datos cargados correctamente');
+        });
+        
+        document.body.addEventListener('htmx:responseError', function(event) {
+            console.error('❌ Error cargando datos:', event.detail.xhr.status);
+            alert('Error cargando datos. Por favor, intente nuevamente.');
+        });
+    });
+</script>
+{% endblock %}
