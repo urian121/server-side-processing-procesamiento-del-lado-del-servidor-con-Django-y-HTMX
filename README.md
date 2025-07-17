@@ -3,6 +3,10 @@
 ## Descripción
 Sistema web desarrollado en Django para gestionar empleados con capacidad de manejar más de 20,000 registros utilizando HTMX para procesamiento del lado del servidor.
 
+![Demo](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/server-side-processing-django-htmx.gif)
+
+![Demo](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/server-side-processing-django-htmx.png)
+
 ## Características
 - ✅ Gestión completa de empleados (CRUD)
 - ✅ Interfaz moderna con HTMX
