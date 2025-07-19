@@ -1,7 +1,7 @@
 # Procesamiento del lado del servidor con Django y HTMX
 
 ## Descripción
-Sistema web desarrollado en Django para gestionar empleados con capacidad de manejar más de 20,000 registros utilizando HTMX para procesamiento del lado del servidor.
+Sistema web desarrollado en Django para gestionar empleados con capacidad de manejar más de 100,000 registros utilizando HTMX para procesamiento del lado del servidor.
 
 ![Demo](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/refs/heads/master/server-side-processing-django-htmx.gif)
 
